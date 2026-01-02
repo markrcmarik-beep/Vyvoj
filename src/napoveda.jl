@@ -1,5 +1,25 @@
 ## Funkce Julia
-############################################################### 
+###############################################################
+## Popis funkce:
+#
+# ver: 2026-01-02
+## Funkce: nazev_funkce()
+#
+## Vzor:
+## vystupni_promenne = nazev_funkce(vstupni_promenne)
+## Vstupní proměnné:
+#
+## Výstupní proměnné:
+#
+## Použité balíčky:
+#
+## Použité uživatelské funkce:
+#
+## Příklad:
+#
+###############################################################
+## Použité proměnné vnitřní:
+#
 """
 ## Popis funkce:
 # Vypíše vzorovou hlavičku nové uživatelské funkce.
@@ -12,7 +32,7 @@
 #
 ## Výstupní proměnné:
 #
-## Pouzite balicky
+## Použité balíčky:
 # Dates
 ## Použité funkce:
 #
@@ -33,7 +53,7 @@ function napoveda()
         "Vzor:",                        # 4
         "Vstupní proměnné:",            # 5
         "Výstupní proměnné:",           # 6
-        "Použité balíčky",              # 7
+        "Použité balíčky:",             # 7
         "Použité uživatelské funkce:",  # 8
         "Příklad:",                     # 9
         "Použité proměnné vnitřní:"     # 10
