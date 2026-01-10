@@ -1,4 +1,28 @@
+## Funkce Julia
+###############################################################
+## Popis funkce:
+#
 # ver: 2026-01-10
+## Funkce: cdslozka()
+#
+## Cesta uvnitř balíčku:
+# Vyvoj/src/cdslozka.jl
+#
+## Vzor:
+## vystupni_promenne = cdslozka(vstupni_promenne)
+## Vstupní proměnné:
+#
+## Výstupní proměnné:
+#
+## Použité balíčky:
+#
+## Použité uživatelské funkce:
+#
+## Příklad:
+# cdslozka()
+###############################################################
+## Použité proměnné vnitřní:
+#
 
 function cdslozka(projekt::String="")
 
