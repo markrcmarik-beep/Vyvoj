@@ -1,6 +1,6 @@
-# ver: 2025-12-08
+# ver: 2026-01-10
 
-function cdslozka()
+function cdslozka(projekt::String="")
 
     # Detekce platformy: použijeme Sys.* funkce (jsou v modulu Sys)
     if Sys.isunix() # Linux nebo macOS
@@ -10,11 +10,17 @@ function cdslozka()
     else
         error("Nepodporovaný operační systém") # Chyba pro neznámé OS
     end
+    if !isdir(cesta)
+        error("Cílová cesta neexistuje: $cesta")
+    end
+    if projekt != ""
+        cesta = joinpath(cesta, projekt)
+    end
     if isdir(cesta)
         cd(cesta) # Změní aktuální pracovní adresář
-        println("Aktuální pracovní složka změněna na: $cesta") # Potvrzení změny
+        println("Aktuální složka: $cesta") # Potvrzení změny
     else
-        error("Cílová složka neexistuje: $cesta") # Chyba, pokud složka neexistuje
+        error("Cílová cesta ", projekt," neexistuje v $cesta") # Chyba, pokud složka neexistuje
     end
 
 end
