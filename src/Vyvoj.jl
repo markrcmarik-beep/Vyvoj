@@ -1,4 +1,4 @@
-## Balíček Julia
+## Balíček Julia v1.12
 ###############################################################
 ## Popis balíčku:
 #
@@ -7,7 +7,7 @@
 # Vyvoj/src/Vyvoj.jl
 #
 ## Použité balíčky:
-#
+# Dates, Pkg
 ###############################################################
 ## Použité proměnné vnitřní:
 #
@@ -16,6 +16,7 @@ module Vyvoj
 include("napoveda.jl")
 include("cdslozka.jl")
 include("vytvorstartup.jl")
+include("zavislostnauzivbalicek.jl")
 
 export napoveda, cdslozka, vytvorstartup
 

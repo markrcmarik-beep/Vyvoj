@@ -1,8 +1,8 @@
-## Funkce Julia
+## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
 #
-# ver: 2026-01-10
+# ver: 2026-01-11
 ## Funkce: napoveda()
 #
 ## Cesta uvnitř balíčku:
@@ -51,7 +51,8 @@
 using Dates
 
 function napoveda(projekt::String="")
-
+v = VERSION # Verze Julia
+verze_minor = string(v.major, ".", v.minor) # Verze Julia Upravená např: "1.11", "1.12"
     T1 = [
         "Popis funkce:",                # 1
         "ver:",                         # 2
@@ -65,9 +66,9 @@ function napoveda(projekt::String="")
         "Příklad:",                     # 10
         "Použité proměnné vnitřní:"     # 11
     ]
-if projekt == "" # funkce
+if projekt in ["", "funkce"] # funkce
     textN = """
-## Funkce Julia
+## Funkce Julia v$verze_minor
 ###############################################################
 ## $(T1[1])
 #
@@ -95,7 +96,7 @@ if projekt == "" # funkce
 """
 elseif projekt in ["balíček", "balicek"] # balíček
     textN = """
-## Balíček Julia
+## Balíček Julia v$verze_minor
 ###############################################################
 ## Popis balíčku
 #
