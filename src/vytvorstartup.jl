@@ -1,8 +1,8 @@
-## Funkce Julia
+## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
 #
-# ver: 2026-01-10
+# ver: 2026-01-11
 ## Funkce: vytvorstartup()
 #
 ## Cesta uvnitř balíčku:
@@ -52,6 +52,7 @@ function vytvorstartup()
     content = """
     # Automaticky generovaný startup.jl
     using Revise
+    using Vyvoj
     """
 
     # Zápis do souboru (přepíše existující)
