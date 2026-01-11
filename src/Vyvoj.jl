@@ -2,7 +2,7 @@
 ###############################################################
 ## Popis balíčku:
 #
-# ver: 2026-01-10
+# ver: 2026-01-11
 ## Cesta uvnitř balíčku:
 # Vyvoj/src/Vyvoj.jl
 #
@@ -18,6 +18,6 @@ include("cdslozka.jl")
 include("vytvorstartup.jl")
 include("zavislostnauzivbalicek.jl")
 
-export napoveda, cdslozka, vytvorstartup
+export napoveda, cdslozka
 
 end # module Vyvoj
