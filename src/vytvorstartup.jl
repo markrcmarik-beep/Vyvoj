@@ -38,9 +38,9 @@ function vytvorstartup()
     # Cesta k souboru startup.jl
     startup_file = joinpath(config_dir, "startup.jl")
     # Získání seznamu nainstalovaných balíčků v aktuálním prostředí
-    installed = keys(Pkg.dependencies())
+    deps = Pkg.dependencies()
     # Kontrola, zda je Revise mezi nimi
-    if "Revise" in installed
+    if any(dep.name == "Revise" for dep in values(deps))
         println("Revise.jl je již nainstalován.")
     else
         println("Revise.jl není nainstalován. Instalace...")
