@@ -1,9 +1,10 @@
 ## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
-#
-# ver: 2026-01-11
+# Vypíše vzorovou hlavičku nové uživatelské funkce, balíčku.
+# ver: 2026-01-25
 ## Funkce: napoveda()
+## Autor: Martin
 #
 ## Cesta uvnitř balíčku:
 # Vyvoj/src/napoveda.jl
@@ -11,16 +12,17 @@
 ## Vzor:
 ## _ = napoveda()
 ## Vstupní proměnné:
-#
+# projekt::String="" - název projektu: "funkce" nebo "balíček"
 ## Výstupní proměnné:
-#
+# string - textový výpis vzorové hlavičky
 ## Použité balíčky:
-#
+# Dates
 ## Použité uživatelské funkce:
 #
 ## Příklad:
-# napoveda()
-#
+# napoveda() => vypíše vzorovou hlavičku funkce
+# napoveda("balíček") => vypíše vzorovou hlavičku balíčku
+# napoveda("funkce") => vypíše vzorovou hlavičku funkce
 ###############################################################
 ## Použité proměnné vnitřní:
 #
@@ -29,6 +31,7 @@
 # Vypíše vzorovou hlavičku nové uživatelské funkce.
 # ver: 2025-11-24
 ## Funkce: nazev_funkce()
+## Autor: Martin
 #
 ## Cesta uvnitř balíčku:
 # Balicek/src/nazev_funkce.jl
@@ -44,7 +47,7 @@
 ## Použité funkce:
 #
 ## Příklad:
-# Vrátí vzorovou hlavičku funkce.
+#
 """
 ############################################################### 
 
@@ -57,41 +60,43 @@ verze_minor = string(v.major, ".", v.minor) # Verze Julia Upravená např: "1.11
         "Popis funkce:",                # 1
         "ver:",                         # 2
         "Funkce:",                      # 3
-        "Cesta uvnitř balíčku:",        # 4
-        "Vzor:",                        # 5
-        "Vstupní proměnné:",            # 6
-        "Výstupní proměnné:",           # 7
-        "Použité balíčky:",             # 8
-        "Použité uživatelské funkce:",  # 9
-        "Příklad:",                     # 10
-        "Použité proměnné vnitřní:"     # 11
+        "Autor:",                       # 4
+        "Cesta uvnitř balíčku:",        # 5
+        "Vzor:",                        # 6
+        "Vstupní proměnné:",            # 7
+        "Výstupní proměnné:",           # 8
+        "Použité balíčky:",             # 9
+        "Použité uživatelské funkce:",  # 10
+        "Příklad:",                     # 11
+        "Použité proměnné vnitřní:"     # 12
     ]
 if projekt in ["", "funkce"] # funkce
     textN = """
 ## Funkce Julia v$verze_minor
 ###############################################################
-## $(T1[1])
+## Popis funkce:
 #
-# $(T1[2]) $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## $(T1[3]) nazev_funkce()
+# ver: $(Dates.format(Dates.now(), "yyyy-mm-dd"))
+## Funkce: nazev_funkce()
+## Autor: Martin
 #
-## $(T1[4])
+## Cesta uvnitř balíčku:
 # balicek/src/nazev_funkce.jl
 #
-## $(T1[5])
+## Vzor:
 ## vystupni_promenne = nazev_funkce(vstupni_promenne)
-## $(T1[6])
+## Vstupní proměnné:
 #
-## $(T1[7])
+## Výstupní proměnné:
 #
-## $(T1[8])
+## Použité balíčky:
 #
-## $(T1[9])
+## Použité uživatelské funkce:
 #
-## $(T1[10])
+## Příklad:
 #
 ###############################################################
-## $(T1[11])
+## Použité proměnné vnitřní:
 #
 """
 elseif projekt in ["balíček", "balicek"] # balíček
@@ -101,13 +106,14 @@ elseif projekt in ["balíček", "balicek"] # balíček
 ## Popis balíčku
 #
 # $(T1[2]) $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## $(T1[4])
+## Autor: Martin
+## Cesta uvnitř balíčku:
 # balicek/src/balicek.jl
 #
-## $(T1[8])
+## Použité balíčky:
 #
 ###############################################################
-## $(T1[11])
+## Použité proměnné vnitřní:
 #
 """
 else
