@@ -1,6 +1,6 @@
 name = "Vyvoj"
 uuid = "b87271fa-763f-41e2-9562-e21bb3e7007d"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Martin"]
 
 [deps]
