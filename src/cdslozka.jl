@@ -28,9 +28,9 @@ function cdslozka(projekt::String="")
 
     # Detekce platformy: použijeme Sys.* funkce (jsou v modulu Sys)
     if Sys.isunix() # Linux nebo macOS
-        cesta = joinpath(homedir(), "Dokumenty", "ProjektyTechnika", "Julia", "funkce", "balicky") # pro Linux a macOS
+        cesta = joinpath(homedir(), "Dokumenty", "balickyJulia") # pro Linux a macOS
     elseif Sys.iswindows() # Windows
-        cesta = joinpath(homedir(), "ProjektyTechnika", "Julia", "funkce", "balicky") # pro Windows
+        cesta = joinpath(homedir(), "balickyJulia") # pro Windows
     else
         error("Nepodporovaný operační systém") # Chyba pro neznámé OS
     end
