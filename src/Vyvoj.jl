@@ -17,7 +17,8 @@ include("napoveda.jl")
 include("cdslozka.jl")
 include("vytvorstartup.jl")
 include("zavislostnauzivbalicek.jl")
+include("vytvorskriptbalicku.jl")
 
-export napoveda, cdslozka
+export napoveda, cdslozka, vytvorskriptbalicku
 
 end # module Vyvoj

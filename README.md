@@ -24,7 +24,7 @@ using Vyvoj
 
 Hlavní funkce
 
-Balíček aktuálně exportuje dvě hlavní funkce:
+Balíček aktuálně exportuje několik hlavních funkcí:
 
 napoveda() - vypíše vzorovou hlavičku pro novou funkci
 
@@ -33,6 +33,8 @@ napoveda("balíček") - vypíše vzorovou hlavičku pro nový balíček
 cdslozka() - přepne do hlavní vývojové složky `balickyJulia`
 
 cdslozka("NazevProjektu") - přepne do konkrétního projektu uvnitř `balickyJulia`
+
+vytvorskriptbalicku("NazevBalicku") - vytvoří skript `VytvoreniBalicku.jl` pro založení nového balíčku
 
 Příklad použití
 
