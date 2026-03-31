@@ -1,6 +1,6 @@
 name = "Vyvoj"
 uuid = "b87271fa-763f-41e2-9562-e21bb3e7007d"
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Martin"]
 
 [deps]
@@ -17,4 +17,4 @@ test = ["Test"]
 julia = "1.12"
 
 Dates = "1"
-Pkg = "1.12"
+Pkg = "1"
