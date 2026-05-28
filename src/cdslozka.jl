@@ -1,7 +1,7 @@
-## Funkce Julia
+## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
-#
+# Změní aktuální pracovní adresář na specifickou složku pro vývoj balíčků.
 # ver: 2026-01-10
 ## Funkce: cdslozka()
 #

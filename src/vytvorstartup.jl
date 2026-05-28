@@ -1,21 +1,25 @@
 ## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
-#
-# ver: 2026-01-11
+# Vytvoří soubor `startup.jl` v uživatelské konfiguraci Julia, 
+# který automaticky načítá balíčky `Revise` a `Vyvoj` při spuštění 
+# Julia. Pokud složka pro konfiguraci neexistuje, funkce ji vytvoří. 
+# Také zkontroluje, zda je balíček `Revise` nainstalován, a pokud 
+# ne, nainstaluje ho.
+# ver: 2026-03-14
 ## Funkce: vytvorstartup()
 #
 ## Cesta uvnitř balíčku:
 # Vyvoj/src/vytvorstartup.jl
 #
 ## Vzor:
-## _ = vytvorstartup()
+## vytvorstartup()
 ## Vstupní proměnné:
 #
 ## Výstupní proměnné:
 #
 ## Použité balíčky:
-#
+# Pkg
 ## Použité uživatelské funkce:
 #
 ## Příklad:

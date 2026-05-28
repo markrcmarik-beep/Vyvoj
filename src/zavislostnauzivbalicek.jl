@@ -1,7 +1,7 @@
-## Funkce Julia
+## Funkce Julia v1.12
 ###############################################################
 ## Popis funkce:
-# přidá do uživatelského balíčku zavislost na jiném uživatelském balíčku
+# Přidá do uživatelského balíčku zavislost na jiném uživatelském balíčku
 # ver: 2026-01-11
 ## Funkce: zavislostnauzivbalicek()
 #
