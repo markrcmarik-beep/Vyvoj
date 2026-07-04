@@ -1,3 +1,4 @@
+# ver:2026-07-02
 
 println("změna do složky: balicky")
 cdslozka()
