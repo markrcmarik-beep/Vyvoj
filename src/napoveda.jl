@@ -2,7 +2,7 @@
 ###############################################################
 ## Popis funkce:
 # Vypíše vzorovou hlavičku nové uživatelské funkce, balíčku.
-# ver: 2026-01-25
+# ver: 2026-07-30
 ## Funkce: napoveda()
 ## Autor: Martin
 #
@@ -99,6 +99,55 @@ if projekt in ["", "funkce"] # funkce
 ## Použité proměnné vnitřní:
 #
 """
+elseif projekt in ["funkce.jl", "funkce jl"]
+    textN = """
+## ver: $(Dates.format(Dates.now(), "yyyy-mm-dd"))
+## Funkce: nazev_funkce()
+## Autor: Martin
+#
+## Cesta uvnitř balíčku:
+# balicek/src/nazev_funkce.jl
+## Použité balíčky
+#
+## Použité uživatelské funkce:
+#
+###############################################################
+## Použité proměnné vnitřní:
+#
+"""
+elseif projekt in ["funkce.md", "funkce md"]
+    textN = """
+## funkce `nazev_funkce.jl`
+## Funkce Julia v$verze_minor
+###############################################################
+## Popis funkce:
+popis_funkce
+## Vzor:
+vystupni_promenne = nazev_funkce(vstupni_promenne)
+## Vstupní proměnné:
+- `promenna` - popis_promenne
+## Výstupní proměnné:
+- `promenna` - popis_promenne
+## Příklad:
+```julia
+priklad_pouziti_funkce
+```
+"""
+elseif projekt in ["balicek.jl", "balicek jl"]
+    textN = """
+## Balíček Julia v$verze_minor
+###############################################################
+## Popis balíčku
+#
+# $(T1[2]) $(Dates.format(Dates.now(), "yyyy-mm-dd"))
+## Autor: Martin
+#
+## Cesta uvnitř balíčku:
+# balicek/src/balicek.jl
+#
+## Použité balíčky:
+#
+"""
 elseif projekt in ["balíček", "balicek"] # balíček
     textN = """
 ## Balíček Julia v$verze_minor
@@ -111,9 +160,6 @@ elseif projekt in ["balíček", "balicek"] # balíček
 # balicek/src/balicek.jl
 #
 ## Použité balíčky:
-#
-###############################################################
-## Použité proměnné vnitřní:
 #
 """
 else
