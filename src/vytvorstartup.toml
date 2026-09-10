@@ -1,0 +1,7 @@
+schema_version = "1.0.0"
+
+# Automaticky generovaný startup.jl
+content = """
+    using Revise
+    using Vyvoj
+    """

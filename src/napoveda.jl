@@ -16,7 +16,7 @@
 ## Výstupní proměnné:
 # string - textový výpis vzorové hlavičky
 ## Použité balíčky:
-# Dates
+# Dates, TOML
 ## Použité uživatelské funkce:
 #
 ## Příklad:
@@ -49,122 +49,33 @@
 ## Příklad:
 #
 """
-############################################################### 
+###############################################################
 
 using Dates
+using TOML
+
+function _napoveda_sablony()
+    return TOML.parsefile(joinpath(@__DIR__, "napoveda.toml"))["templates"]
+end
 
 function napoveda(projekt::String="")
-v = VERSION # Verze Julia
-verze_minor = string(v.major, ".", v.minor) # Verze Julia Upravená např: "1.11", "1.12"
-    T1 = [
-        "Popis funkce:",                # 1
-        "ver:",                         # 2
-        "Funkce:",                      # 3
-        "Autor:",                       # 4
-        "Cesta uvnitř balíčku:",        # 5
-        "Vzor:",                        # 6
-        "Vstupní proměnné:",            # 7
-        "Výstupní proměnné:",           # 8
-        "Použité balíčky:",             # 9
-        "Použité uživatelské funkce:",  # 10
-        "Příklad:",                     # 11
-        "Použité proměnné vnitřní:"     # 12
-    ]
-if projekt in ["", "funkce"] # funkce
-    textN = """
-## Funkce Julia v$verze_minor
-###############################################################
-## Popis funkce:
-#
-# ver: $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## Funkce: nazev_funkce()
-## Autor: Martin
-#
-## Cesta uvnitř balíčku:
-# balicek/src/nazev_funkce.jl
-#
-## Vzor:
-## vystupni_promenne = nazev_funkce(vstupni_promenne)
-## Vstupní proměnné:
-#
-## Výstupní proměnné:
-#
-## Použité balíčky:
-#
-## Použité uživatelské funkce:
-#
-## Příklad:
-#
-###############################################################
-## Použité proměnné vnitřní:
-#
-"""
-elseif projekt in ["funkce.jl", "funkce jl"]
-    textN = """
-## ver: $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## Funkce: nazev_funkce()
-## Autor: Martin
-#
-## Cesta uvnitř balíčku:
-# balicek/src/nazev_funkce.jl
-## Použité balíčky
-#
-## Použité uživatelské funkce:
-#
-###############################################################
-## Použité proměnné vnitřní:
-#
-"""
-elseif projekt in ["funkce.md", "funkce md"]
-    textN = """
-## funkce `nazev_funkce.jl`
-## Funkce Julia v$verze_minor
-###############################################################
-## Popis funkce:
-popis_funkce
-## Vzor:
-vystupni_promenne = nazev_funkce(vstupni_promenne)
-## Vstupní proměnné:
-- `promenna` - popis_promenne
-## Výstupní proměnné:
-- `promenna` - popis_promenne
-## Příklad:
-```julia
-priklad_pouziti_funkce
-```
-"""
-elseif projekt in ["balicek.jl", "balicek jl"]
-    textN = """
-## Balíček Julia v$verze_minor
-###############################################################
-## Popis balíčku
-#
-# $(T1[2]) $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## Autor: Martin
-#
-## Cesta uvnitř balíčku:
-# balicek/src/balicek.jl
-#
-## Použité balíčky:
-#
-"""
-elseif projekt in ["balíček", "balicek"] # balíček
-    textN = """
-## Balíček Julia v$verze_minor
-###############################################################
-## Popis balíčku
-#
-# $(T1[2]) $(Dates.format(Dates.now(), "yyyy-mm-dd"))
-## Autor: Martin
-## Cesta uvnitř balíčku:
-# balicek/src/balicek.jl
-#
-## Použité balíčky:
-#
-"""
-else
-    error("Chybné zadání")
-end
-    println(textN)
+    sablona = if projekt in ["", "funkce"]
+        "funkce"
+    elseif projekt in ["funkce.jl", "funkce jl"]
+        "funkce_jl"
+    elseif projekt in ["funkce.md", "funkce md"]
+        "funkce_md"
+    elseif projekt in ["balicek.jl", "balicek jl"]
+        "balicek_jl"
+    elseif projekt in ["balíček", "balicek"]
+        "balicek"
+    else
+        error("Chybné zadání")
+    end
 
-end # konec funkce
+    verze_minor = string(VERSION.major, ".", VERSION.minor)
+    datum = Dates.format(Dates.now(), "yyyy-mm-dd")
+    textN = _napoveda_sablony()[sablona]
+    textN = replace(textN, "{julia_version}" => verze_minor, "{date}" => datum)
+    println(textN)
+end

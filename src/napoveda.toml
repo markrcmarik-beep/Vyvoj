@@ -1,0 +1,95 @@
+schema_version = "1.0.0"
+
+[templates]
+funkce = """
+## Funkce Julia v{julia_version}
+###############################################################
+## Popis funkce:
+#
+# ver: {date}
+## Funkce: nazev_funkce()
+## Autor: Martin
+#
+## Cesta uvnitř balíčku:
+# balicek/src/nazev_funkce.jl
+#
+## Vzor:
+## vystupni_promenne = nazev_funkce(vstupni_promenne)
+## Vstupní proměnné:
+#
+## Výstupní proměnné:
+#
+## Použité balíčky:
+#
+## Použité uživatelské funkce:
+#
+## Příklad:
+#
+###############################################################
+## Použité proměnné vnitřní:
+#
+"""
+
+funkce_jl = """
+## ver: {date}
+## Funkce: nazev_funkce()
+#
+## Cesta uvnitř balíčku:
+# balicek/src/nazev_funkce.jl
+## Použité balíčky
+#
+## Použité uživatelské funkce:
+#
+###############################################################
+## Použité proměnné vnitřní:
+#
+"""
+
+funkce_md = """
+## funkce `nazev_funkce.jl`
+## Funkce Julia v{julia_version}
+###############################################################
+## Popis funkce:
+popis_funkce
+## Vzor:
+vystupni_promenne = nazev_funkce(vstupni_promenne)
+## Vstupní proměnné:
+- `promenna` - popis_promenne
+## Výstupní proměnné:
+- `promenna` - popis_promenne
+## Příklad:
+```julia
+priklad_pouziti_funkce
+```
+"""
+
+balicek_jl = """
+## Balíček Julia v{julia_version}
+###############################################################
+## Popis balíčku
+#
+# ver: {date}
+## Autor: Martin
+#
+## Cesta uvnitř balíčku:
+# balicek/src/balicek.jl
+#
+## Použité balíčky:
+#
+"""
+
+balicek = """
+## Balíček Julia v{julia_version}
+###############################################################
+## Popis balíčku
+#
+# ver: {date}
+## Autor: Martin
+## Cesta uvnitř balíčku:
+# balicek/src/balicek.jl
+#
+## Použité balíčky:
+#
+"""
+
+
