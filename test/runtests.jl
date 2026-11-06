@@ -4,4 +4,6 @@ using Test
     # materialy
     include("cdslozka_test.jl")
     include("napoveda_test.jl")
+
+    nothing
     

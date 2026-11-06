@@ -6,7 +6,7 @@
 # Julia. Pokud složka pro konfiguraci neexistuje, funkce ji vytvoří. 
 # Také zkontroluje, zda je balíček `Revise` nainstalován, a pokud 
 # ne, nainstaluje ho.
-# ver: 2026-03-14
+# ver: 2026-09-08
 ## Funkce: vytvorstartup()
 #
 ## Cesta uvnitř balíčku:
@@ -28,11 +28,12 @@
 ## Použité proměnné vnitřní:
 #
 using Pkg
+using TOML
 
-function vytvorstartup()
+function vytvorstartup(args...)
     # Cesta k uživatelské konfiguraci Julia
     config_dir = joinpath(homedir(), ".julia", "config")
-
+if length(args) == 0
     # Pokud složka neexistuje, vytvoří se
     if !isdir(config_dir)
         mkpath(config_dir)
@@ -52,12 +53,9 @@ function vytvorstartup()
         println("Instalace dokončena.")
     end
 
-    # Obsah, který chceme zapsat
-    content = """
-    # Automaticky generovaný startup.jl
-    using Revise
-    using Vyvoj
-    """
+    # Obsah startupu načtený z konfiguračního TOML souboru
+    startup_config = TOML.parsefile(joinpath(@__DIR__, "vytvorstartup.toml"))
+    content = startup_config["content"]
 
     # Zápis do souboru (přepíše existující)
     open(startup_file, "w") do io
@@ -65,4 +63,17 @@ function vytvorstartup()
     end
 
     println("Soubor startup.jl byl vytvořen v: $startup_file")
+elseif length(args) == 1 && args[1] == "smaz"
+    # Smazání souboru startup.jl, pokud existuje
+    startup_file = joinpath(config_dir, "startup.jl")
+    if isfile(startup_file)
+        rm(startup_file)
+        println("Soubor startup.jl byl smazán.")
+    else
+        println("Soubor startup.jl neexistuje.")
+    end
+else
+    println("Neplatné argumenty. Použijte buď bez argumentů pro vytvoření, nebo 'smaz' pro smazání.")
+end
+
 end
