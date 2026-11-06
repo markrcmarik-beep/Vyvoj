@@ -2,7 +2,7 @@
 
 Tento soubor obsahuje seznam verzí balíčku `Vyvoj`, které byly v repozitáři dosud vytvořeny. Před verzí `0.1.7` nebyly v historii repozitáře explicitně označeny samostatné verze, takže další vývoj je shrnut v rámci první evidované stabilnější řady.
 
-## [0.1.10] - 2026-11-04
+## [0.1.10] - 2026-11-06
 
 ### Přidáno
 - Soubor nápovědy balíčku `Vyvoj.md`
