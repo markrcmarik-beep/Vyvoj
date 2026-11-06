@@ -1,16 +1,19 @@
-## Balíček Julia v1.12
+## Balíček Julia v1.13
 ###############################################################
 ## Popis balíčku:
 #
-# ver: 2026-01-11
+# ver: 2026-11-04
 ## Cesta uvnitř balíčku:
 # Vyvoj/src/Vyvoj.jl
 #
 ## Použité balíčky:
-# Dates, Pkg
+# Dates, Pkg, TOML
 ###############################################################
 ## Použité proměnné vnitřní:
 #
+"""
+$(read(joinpath(@__DIR__, "..", "docs", "src", "Vyvoj.md"), String))
+"""
 module Vyvoj
 
 include("napoveda.jl")
