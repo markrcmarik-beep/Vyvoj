@@ -1,39 +1,35 @@
-## Funkce Julia v1.12
-###############################################################
-## Popis funkce:
-# Vytvoří soubor `startup.jl` v uživatelské konfiguraci Julia, 
-# který automaticky načítá balíčky `Revise` a `Vyvoj` při spuštění 
-# Julia. Pokud složka pro konfiguraci neexistuje, funkce ji vytvoří. 
-# Také zkontroluje, zda je balíček `Revise` nainstalován, a pokud 
-# ne, nainstaluje ho.
-# ver: 2026-09-08
-## Funkce: vytvorstartup()
+# ver: 2026-11-16
+## Funkce _nazevFunkce_()
+## Autor: Martin
 #
 ## Cesta uvnitř balíčku:
 # Vyvoj/src/vytvorstartup.jl
-#
-## Vzor:
-## vytvorstartup()
-## Vstupní proměnné:
-#
-## Výstupní proměnné:
-#
 ## Použité balíčky:
-# Pkg
+# Pkg, TOML
 ## Použité uživatelské funkce:
-#
-## Příklad:
 #
 ###############################################################
 ## Použité proměnné vnitřní:
 #
+
 using Pkg
 using TOML
-
+"""
+$(read(joinpath(@__DIR__, "..", "docs", "src", "vytvorstartup.md"), String))
+"""
 function vytvorstartup(args...)
     # Cesta k uživatelské konfiguraci Julia
     config_dir = joinpath(homedir(), ".julia", "config")
-if length(args) == 0
+    startup_file = joinpath(config_dir, "startup.jl")
+if length(args) == 0 || (length(args) == 1 && args[1] == "info")
+    if isfile(startup_file)
+        println("Soubor startup.jl existuje v: $startup_file")
+        println("Obsah souboru startup.jl:")
+        println(read(startup_file, String))
+    else
+        println("Soubor startup.jl neexistuje.")
+    end
+elseif args[1] == "vytvor"
     # Pokud složka neexistuje, vytvoří se
     if !isdir(config_dir)
         mkpath(config_dir)

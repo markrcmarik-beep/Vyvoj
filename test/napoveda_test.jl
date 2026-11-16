@@ -18,6 +18,25 @@ using Vyvoj
     a01 = read(vystup, String)
     @test a01 isa String
     @test !isempty(a01)
+
+    vystup = Pipe()
+    redirect_stdout(vystup) do
+        napoveda("funkcejl")
+    end
+    close(vystup.in)
+    a02 = read(vystup, String)
+    @test occursin("Autor: Martin", a02)
+    @test occursin("_nazevFunkce_", a02)
+    @test occursin("function _nazevFunkce_", a02)
+    @test !occursin("{obsah_funkce}", a02)
+
+    vystup = Pipe()
+    redirect_stdout(vystup) do
+        napoveda("funkcemd")
+    end
+    close(vystup.in)
+    a03 = read(vystup, String)
+    @test occursin("## funkce `_nazevFunkce_`", a03)
 end
 
 nothing

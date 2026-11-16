@@ -10,7 +10,8 @@
 # Vyvoj/src/vytvorskriptbalicku.jl
 #
 ## Vzor:
-## vystupni_promenne = vytvorskriptbalicku(nazevB::AbstractString, cil::AbstractString, soubor::AbstractString, prepsat::Bool)
+## vystupni_promenne = vytvorskriptbalicku(nazevB::AbstractString, 
+## cil::AbstractString, soubor::AbstractString, prepsat::Bool)
 ## Vstupní proměnné:
 # - `nazevB`: Název balíčku, který bude vytvořen.
 # - `cil`: Cílová složka, kam bude skript uložen (výchozí je domovský adresář).
@@ -28,7 +29,9 @@
 ## Použité proměnné vnitřní:
 #
 using Dates
-
+"""
+$(read(joinpath(@__DIR__, "..", "docs", "src", "vytvorskriptbalicku.md"), String))
+"""
 function vytvorskriptbalicku(
     nazevB::AbstractString,
     cil::AbstractString=homedir(),

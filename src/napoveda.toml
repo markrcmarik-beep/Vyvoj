@@ -1,65 +1,55 @@
 schema_version = "1.0.0"
+[promenne]
+autor = "Martin"
+nazevfunkce = "_nazevFunkce_"
+nazevbalicku = "_nazevBalicku_"
 
 [templates]
-funkce = """
-## Funkce Julia v{julia_version}
-###############################################################
-## Popis funkce:
-#
+funkce_jl = """
 # ver: {date}
-## Funkce: nazev_funkce()
-## Autor: Martin
+## Funkce {nazevfunkce}()
+## Autor: {autor}
+## Funkce Julia v{julia_version}
 #
 ## Cesta uvnitř balíčku:
-# balicek/src/nazev_funkce.jl
-#
-## Vzor:
-## vystupni_promenne = nazev_funkce(vstupni_promenne)
-## Vstupní proměnné:
-#
-## Výstupní proměnné:
-#
+# {nazevbalicku}/src/{nazevfunkce}.jl
 ## Použité balíčky:
 #
 ## Použité uživatelské funkce:
 #
-## Příklad:
-#
 ###############################################################
 ## Použité proměnné vnitřní:
 #
-"""
+using {nazevbalicku}
+{obsah_funkce}
+function {nazevfunkce}(vstupni_promenne)
+# -----------------------------------------------------------------------
+# vnitřní funkce start
+# -----------------------------------------------------------------------
 
-funkce_jl = """
-## ver: {date}
-## Funkce: nazev_funkce()
-#
-## Cesta uvnitř balíčku:
-# balicek/src/nazev_funkce.jl
-## Použité balíčky
-#
-## Použité uživatelské funkce:
-#
-###############################################################
-## Použité proměnné vnitřní:
-#
+# -----------------------------------------------------------------------
+# vnitřní funkce konec
+# -----------------------------------------------------------------------
+    _popisFunkce_
+    return vystupni_promenne
+end # konec funkce {nazevfunkce}
 """
 
 funkce_md = """
-## funkce `nazev_funkce.jl`
-## Funkce Julia v{julia_version}
+## funkce `{nazevfunkce}`
+## soubor `{nazevfunkce}.jl`
 ###############################################################
 ## Popis funkce:
-popis_funkce
+_popisFunkce_
 ## Vzor:
-vystupni_promenne = nazev_funkce(vstupni_promenne)
+vystupni_promenne = {nazevfunkce}(vstupni_promenne)
 ## Vstupní proměnné:
 - `promenna` - popis_promenne
 ## Výstupní proměnné:
 - `promenna` - popis_promenne
 ## Příklad:
 ```julia
-priklad_pouziti_funkce
+_priklad_pouziti_funkce_
 ```
 """
 
@@ -69,27 +59,47 @@ balicek_jl = """
 ## Popis balíčku
 #
 # ver: {date}
-## Autor: Martin
+## Autor: {autor}
 #
 ## Cesta uvnitř balíčku:
-# balicek/src/balicek.jl
+# {nazevbalicku}/src/{nazevbalicku}.jl
 #
 ## Použité balíčky:
 #
-"""
-
-balicek = """
-## Balíček Julia v{julia_version}
 ###############################################################
-## Popis balíčku
+## Použité proměnné vnitřní:
 #
-# ver: {date}
-## Autor: Martin
-## Cesta uvnitř balíčku:
-# balicek/src/balicek.jl
-#
-## Použité balíčky:
-#
+{obsah_balicku}
+module {nazevbalicku}
+include("{nazevfunkce}.jl")
+export {nazevfunkce}
+end # konec modulu {nazevbalicku}
 """
 
+balicek_md = """
+# {nazevbalicku}
+`{nazevbalicku}` je balíček v jazyce Julia _popisBalicku_
 
+## Instalace
+
+Balíček lze nainstalovat přes správce balíčků Julia:
+
+```julia
+using Pkg
+Pkg.add(url="https://github.com/markrcmarik-beep/{nazevbalicku}")
+```
+
+## Rychlý start
+
+```julia
+using {nazevbalicku}
+```
+
+## Hlavní exportované funkce
+
+- {nazevfunkce} - _popisFunkce_
+"""
+
+data_toml = """
+schema_version = "1.0.0"
+"""
